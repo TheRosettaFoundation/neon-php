@@ -8,11 +8,17 @@
  * http://github.com/colinpizarek
  */
  
-session_start();
-$_SESSION['neonSession'] = null;
+//session_start(); CONFLICTS WITH SLIM
+//$_SESSION['neonSession'] = null; CAN BE DONE LATER
 
 class Neon 
 {
+  public function __construct() {
+    $_SESSION['neonSession'] = null;
+error_log('_SESSION in Neon Constructor...'); // test code
+error_log(print_r($_SESSION, true));
+  }
+
   /*
    * Abstracted HTTP request, used by other class methods
    */
